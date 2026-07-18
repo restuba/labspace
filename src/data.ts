@@ -2,18 +2,18 @@
 // Edit this file to update all content across the portfolio.
 
 export const site = {
-  name: 'Atoll',
-  email: 'hello@atoll.digital',
-  location: 'Montréal, Canada',
+  name: 'Studio',
+  email: 'hello@yourstudio.com',
+  location: 'Your City, Country',
   year: '2025',
 };
 
 export const hero = {
-  title: 'Atoll',
-  tagline: 'A digital agency crafting immersive web experiences through design, code, and motion.',
+  title: 'Studio',
+  tagline: 'A creative studio building modern digital experiences through design, engineering, and motion.',
   meta: [
-    { label: 'Founded', value: '2018' },
-    { label: 'Location', value: 'Montréal' },
+    { label: 'Founded', value: '20XX' },
+    { label: 'Location', value: 'Anywhere' },
     { label: 'Focus', value: 'Digital' },
   ],
 };
@@ -31,46 +31,46 @@ export const about = {
 export const projects = [
   {
     index: '01',
-    title: 'Kubota',
+    title: 'Project Alpha',
     tags: ['Platform', '2024'],
-    description: 'A unified digital platform designed for local reach, scalability, and ease of use across global markets.',
+    description: 'A unified digital platform designed for scalability and seamless user experience across devices.',
     infoBg: 'bg-white',
     mediaBg: 'bg-[#e8e8e4]',
     image: 'https://images.unsplash.com/photo-1592982537447-6f29e18b6fc4?q=80&w=2000&auto=format&fit=crop',
-    imageAlt: 'Kubota',
+    imageAlt: 'Project Alpha',
     href: '#',
   },
   {
     index: '02',
-    title: 'Spafax',
+    title: 'Project Beta',
     tags: ['Media', '2023'],
-    description: 'A sleek, high-performance site reflecting leadership in inflight entertainment and media solutions.',
+    description: 'A high-performance website reflecting brand leadership and modern design principles.',
     infoBg: 'bg-[#E8E7E3]',
     mediaBg: 'bg-[#d5d5d0]',
     image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2000&auto=format&fit=crop',
-    imageAlt: 'Spafax',
+    imageAlt: 'Project Beta',
     href: '#',
   },
   {
     index: '03',
-    title: 'R&D',
+    title: 'Project Gamma',
     tags: ['Experimental', '2023'],
     description: 'Pushing the boundaries of digital experiences with experimental interactive technologies.',
     infoBg: 'bg-[#D5D8DF]',
     mediaBg: 'bg-[#c5c8cf]',
     image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop',
-    imageAlt: 'R&D',
+    imageAlt: 'Project Gamma',
     href: '#',
   },
   {
     index: '04',
-    title: 'Ether',
-    tags: ['Web3', '2024'],
-    description: 'Building trust in web3 through sophisticated and accessible design language.',
+    title: 'Project Delta',
+    tags: ['Web App', '2024'],
+    description: 'Building trust through sophisticated, accessible, and performance-driven design language.',
     infoBg: 'bg-white',
     mediaBg: 'bg-[#eeeeee]',
     image: 'https://images.unsplash.com/photo-1621504450181-5d356f61d307?q=80&w=2000&auto=format&fit=crop',
-    imageAlt: 'Ether',
+    imageAlt: 'Project Delta',
     href: '#',
   },
 ];
@@ -105,17 +105,17 @@ export const services = [
 
 export const story = {
   label: 'Our Story',
-  titleLines: ['Crafting digital', 'experiences since', 'em:2018.'],
+  titleLines: ['Crafting digital', 'experiences since', 'em:day one.'],
   body: 'We partner with ambitious brands to build web experiences that combine strategic thinking with cutting-edge technology. Every pixel, every interaction, every line of code is crafted with intention.',
   image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop',
-  imageAlt: 'About Atoll',
+  imageAlt: 'Our workspace',
 };
 
 export const cta = {
   line1: ["Let's start", 'your next'],
   scrambleWords: ['project', 'idea', 'success', 'vision', 'brand'],
   ctaLabel: 'Get in touch',
-  ctaHref: '#',
+  ctaHref: 'mailto:hello@yourstudio.com',
 };
 
 export const footer = {
