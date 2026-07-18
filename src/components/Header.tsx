@@ -1,6 +1,15 @@
 import { site, footer } from '../data';
+import { getLenis } from '../hooks/useScrollReady';
 
-// All scroll/animation logic is handled centrally in App.tsx
+function scrollTo(e: React.MouseEvent<HTMLAnchorElement>) {
+  e.preventDefault();
+  const href = e.currentTarget.getAttribute('href');
+  if (!href) return;
+  const lenis = getLenis();
+  if (lenis) lenis.scrollTo(href, { duration: 4.4, immediate: true });
+  else document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+}
+
 export default function Header() {
   return (
     <header
@@ -8,11 +17,11 @@ export default function Header() {
       className="fixed top-0 left-0 w-full h-[72px] px-6 md:px-10 flex items-center justify-between z-[100]"
       style={{ transform: 'translateY(-102%)' }}
     >
-      {/* Background layer — toggled via .header-dark class from App.tsx */}
       <div className="header-bg absolute inset-0 bg-bg/80 backdrop-blur-xl border-b border-black/5 transition-colors duration-700" />
 
       <a
         href="#hero"
+        onClick={scrollTo}
         className="relative z-10 font-serif text-2xl font-semibold tracking-tight header-text text-primary transition-colors duration-700"
       >
         {site.name}
@@ -23,6 +32,7 @@ export default function Header() {
           <a
             key={item.label}
             href={item.href}
+            onClick={scrollTo}
             className="header-text text-primary transition-colors duration-700 hover:opacity-60"
           >
             {item.label}

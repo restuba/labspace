@@ -1,4 +1,14 @@
 import { site, footer } from '../data';
+import { getLenis } from '../hooks/useScrollReady';
+
+function scrollTo(e: React.MouseEvent<HTMLAnchorElement>) {
+  const href = e.currentTarget.getAttribute('href');
+  if (!href || !href.startsWith('#')) return;
+  e.preventDefault();
+  const lenis = getLenis();
+  if (lenis) lenis.scrollTo(href, { duration: 1.4 });
+  else document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+}
 
 export default function Footer() {
   return (
@@ -9,7 +19,7 @@ export default function Footer() {
             <h4 className="text-xs uppercase tracking-[0.2em] opacity-40 mb-4">Navigation</h4>
             <ul className="space-y-2 text-sm">
               {footer.nav.map((item) => (
-                <li key={item.label}><a href={item.href} className="footer-link">{item.label}</a></li>
+                <li key={item.label}><a href={item.href} onClick={scrollTo} className="footer-link">{item.label}</a></li>
               ))}
             </ul>
           </div>
@@ -17,7 +27,7 @@ export default function Footer() {
             <h4 className="text-xs uppercase tracking-[0.2em] opacity-40 mb-4">Services</h4>
             <ul className="space-y-2 text-sm">
               {footer.services.map((svc) => (
-                <li key={svc}><a href="#services" className="footer-link">{svc}</a></li>
+                <li key={svc}><a href="#services" onClick={scrollTo} className="footer-link">{svc}</a></li>
               ))}
             </ul>
           </div>

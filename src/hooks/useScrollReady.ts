@@ -13,6 +13,10 @@ export function clearLenis(lenis: Lenis) {
   if (lenisInstance === lenis) lenisInstance = null;
 }
 
+export function getLenis() {
+  return lenisInstance;
+}
+
 export function onScrollReady(listener: (lenis: Lenis) => void) {
   if (lenisInstance) {
     listener(lenisInstance);

@@ -46,6 +46,7 @@ export default function App() {
     setLenis(lenis);
 
     const page = document.getElementById('page-wrapper');
+    // eslint-disable-next-line prefer-const
     animations = gsap.context(() => {
       initRevealLines(page ?? document);
 
