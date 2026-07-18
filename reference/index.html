@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atoll Digital — Clone</title>
+    <meta name="description" content="A conceptual clone of Atoll Digital with immersive scroll effects.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#091423',
+                        bg: '#F4F3EF',
+                        secondary: '#D5D8DF',
+                        accent: '#3B5BDB',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-bg text-primary font-sans antialiased overflow-x-hidden">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- PRELOADER -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="preloader" class="fixed inset-0 z-[200] bg-primary flex items-center justify-center">
+    <div class="text-center">
+        <h2 class="text-bg text-5xl md:text-7xl font-serif font-semibold tracking-tight overflow-hidden">
+            <span class="inline-block preloader-letter" style="transform:translateY(110%)">A</span>
+            <span class="inline-block preloader-letter" style="transform:translateY(110%)">t</span>
+            <span class="inline-block preloader-letter" style="transform:translateY(110%)">o</span>
+            <span class="inline-block preloader-letter" style="transform:translateY(110%)">l</span>
+            <span class="inline-block preloader-letter" style="transform:translateY(110%)">l</span>
+        </h2>
+        <div class="mt-8 mx-auto w-48 h-[2px] bg-white/20 rounded-full overflow-hidden">
+            <div class="preloader-bar-fill h-full bg-white rounded-full" style="width:0%"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- STICKY HEADER -->
+<!-- ═══════════════════════════════════════════ -->
+<header id="main-header" class="fixed top-0 left-0 w-full h-[72px] px-6 md:px-10 flex items-center justify-between z-[100]" style="transform:translateY(-102%);">
+    <div class="header-bg absolute inset-0 bg-bg/80 backdrop-blur-xl border-b border-black/5 transition-colors duration-700"></div>
+    <a href="#" class="relative z-10 font-serif text-2xl font-semibold tracking-tight header-text transition-colors duration-700">Atoll</a>
+    <nav class="relative z-10 hidden md:flex gap-8 text-[13px] uppercase tracking-widest font-medium">
+        <a href="#projects" class="header-text transition-colors duration-700 hover:opacity-60">Work</a>
+        <a href="#services" class="header-text transition-colors duration-700 hover:opacity-60">Services</a>
+        <a href="#story" class="header-text transition-colors duration-700 hover:opacity-60">About</a>
+        <a href="#cta" class="header-text transition-colors duration-700 hover:opacity-60">Contact</a>
+    </nav>
+    <div class="relative z-10 flex items-center gap-4">
+        <span class="header-text text-[13px] uppercase tracking-widest font-medium hidden md:inline transition-colors duration-700">EN</span>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- HERO — Immersive Interactive -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="hero" class="relative h-screen flex flex-col justify-end p-6 md:p-10 overflow-hidden">
+    <canvas id="hero-particles" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+    <div class="hero-orb hero-orb--1 absolute rounded-full pointer-events-none z-0"></div>
+    <div class="hero-orb hero-orb--2 absolute rounded-full pointer-events-none z-0"></div>
+    <div class="hero-orb hero-orb--3 absolute rounded-full pointer-events-none z-0"></div>
+    <div class="hero-line-v absolute top-0 left-1/2 w-px h-0 bg-black/10 z-[1]"></div>
+    <div class="hero-line-h absolute bottom-[120px] left-0 w-0 h-px bg-black/10 z-[1]"></div>
+    <div class="hero-content relative z-[2] flex flex-col md:flex-row gap-8 md:gap-0 mb-[120px]" id="hero-content">
+        <div class="md:w-1/2 flex items-end">
+            <h1 class="hero-title text-[12vw] md:text-[8vw] font-serif font-semibold leading-[0.9] tracking-tight">Atoll</h1>
+        </div>
+        <div class="md:w-1/2 flex flex-col justify-end md:pl-12">
+            <p class="hero-tagline text-lg md:text-xl font-light opacity-0 mb-6 max-w-md" style="transform:translateY(30px);">
+                A digital agency crafting immersive web experiences through design, code, and motion.
+            </p>
+            <div class="flex gap-12 text-xs uppercase tracking-widest opacity-0 hero-meta" style="transform:translateY(20px);">
+                <div><span class="block opacity-40 mb-1">Founded</span><span class="font-medium">2018</span></div>
+                <div><span class="block opacity-40 mb-1">Location</span><span class="font-medium">Montréal</span></div>
+                <div><span class="block opacity-40 mb-1">Focus</span><span class="font-medium">Digital</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-cue absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-0 z-[2]" id="scroll-indicator">
+        <span class="text-[11px] uppercase tracking-[0.3em] font-medium">Scroll</span>
+        <div class="scroll-cue-line w-px h-10 bg-primary/20 relative overflow-hidden rounded-full">
+            <div class="scroll-line-anim absolute inset-x-0 top-0 h-full bg-accent rounded-full"></div>
+        </div>
+        <div class="w-2 h-2 rounded-full bg-accent animate-ping opacity-60"></div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- ABOUT INTRO — Smooth reveal -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="about-intro" class="py-32 md:py-48 px-6 md:px-10">
+    <div class="max-w-5xl mx-auto">
+        <span class="inline-block text-xs uppercase tracking-[0.3em] font-medium opacity-40 mb-12 reveal-line" data-reveal>About</span>
+        <p class="text-3xl md:text-[3.2vw] leading-[1.3] font-light">
+            <span class="reveal-line" data-reveal>We believe in the power of thoughtful design</span>
+            <span class="reveal-line" data-reveal>and meticulous engineering to create digital</span>
+            <span class="reveal-line" data-reveal>products that feel alive, purposeful,</span>
+            <span class="reveal-line" data-reveal>and unmistakably premium.</span>
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SELECTED PROJECTS — Stacked Card Accordion -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="projects" class="project-wrapper relative">
+    <div class="project-sticky sticky top-0 h-screen w-full flex flex-col px-6 md:px-10 pt-24 pb-6">
+        <div class="w-full flex items-center justify-between mb-4">
+            <div class="flex items-center gap-4">
+                <div class="section-line w-0 h-px bg-primary/30"></div>
+                <h2 class="text-xs uppercase tracking-[0.3em] font-medium">Selected Work</h2>
+            </div>
+            <div class="project-counter flex items-baseline gap-1.5">
+                <span class="counter-current text-3xl md:text-4xl font-serif font-semibold leading-none tabular-nums">01</span>
+                <span class="text-sm opacity-20 font-light">/</span>
+                <span class="text-sm opacity-20 font-light">04</span>
+            </div>
+        </div>
+        <div class="w-full h-[2px] bg-black/5 mb-4 rounded-full overflow-hidden">
+            <div class="project-progress h-full bg-accent rounded-full" style="width:0%"></div>
+        </div>
+        <div class="project-stack relative flex-1 w-full overflow-hidden rounded-2xl">
+            <!-- Card 1 -->
+            <div class="project-card absolute inset-0 flex flex-col md:flex-row rounded-2xl overflow-hidden cursor-pointer group" style="z-index:40;">
+                <div class="project-info w-full md:w-[40%] p-6 md:p-10 flex flex-col justify-between bg-white relative z-10">
+                    <div>
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="text-[11px] font-mono font-medium opacity-25">01</span>
+                            <div class="flex gap-2">
+                                <span class="project-tag text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/[0.03] font-medium opacity-50">Platform</span>
+                                <span class="project-tag text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/[0.03] font-medium opacity-50">2024</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title text-4xl md:text-6xl font-serif font-semibold tracking-tight leading-none mb-6">Kubota</h3>
+                        <div class="project-desc"><p class="text-sm md:text-base opacity-50 leading-relaxed max-w-sm">A unified digital platform designed for local reach, scalability, and ease of use across global markets.</p></div>
+                    </div>
+                    <div class="project-cta flex items-center gap-3"><span class="text-xs uppercase tracking-[0.2em] font-medium opacity-40 group-hover:opacity-100 group-hover:text-accent transition-all duration-300">View project</span><span class="text-sm opacity-40 group-hover:opacity-100 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300">→</span></div>
+                </div>
+                <div class="project-media w-full md:w-[60%] h-[240px] md:h-auto overflow-hidden relative bg-[#e8e8e4]">
+                    <img src="https://images.unsplash.com/photo-1592982537447-6f29e18b6fc4?q=80&w=2000&auto=format&fit=crop" class="project-img w-full h-full object-cover" alt="Kubota">
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="project-card absolute inset-0 flex flex-col md:flex-row rounded-2xl overflow-hidden cursor-pointer group" style="z-index:30;">
+                <div class="project-info w-full md:w-[40%] p-6 md:p-10 flex flex-col justify-between bg-[#E8E7E3] relative z-10">
+                    <div>
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="text-[11px] font-mono font-medium opacity-25">02</span>
+                            <div class="flex gap-2">
+                                <span class="project-tag text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/[0.03] font-medium opacity-50">Media</span>
+                                <span class="project-tag text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/[0.03] font-medium opacity-50">2023</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title text-4xl md:text-6xl font-serif font-semibold tracking-tight leading-none mb-6">Spafax</h3>
+                        <div class="project-desc"><p class="text-sm md:text-base opacity-50 leading-relaxed max-w-sm">A sleek, high-performance site reflecting leadership in inflight entertainment and media solutions.</p></div>
+                    </div>
+                    <div class="project-cta flex items-center gap-3"><span class="text-xs uppercase tracking-[0.2em] font-medium opacity-40 group-hover:opacity-100 group-hover:text-accent transition-all duration-300">View project</span><span class="text-sm opacity-40 group-hover:opacity-100 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300">→</span></div>
+                </div>
+                <div class="project-media w-full md:w-[60%] h-[240px] md:h-auto overflow-hidden relative bg-[#d5d5d0]">
+                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2000&auto=format&fit=crop" class="project-img w-full h-full object-cover" alt="Spafax">
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="project-card absolute inset-0 flex flex-col md:flex-row rounded-2xl overflow-hidden cursor-pointer group" style="z-index:20;">
+                <div class="project-info w-full md:w-[40%] p-6 md:p-10 flex flex-col justify-between bg-[#D5D8DF] relative z-10">
+                    <div>
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="text-[11px] font-mono font-medium opacity-25">03</span>
+                            <div class="flex gap-2">
+                                <span class="project-tag text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/[0.03] font-medium opacity-50">Experimental</span>
+                                <span class="project-tag text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/[0.03] font-medium opacity-50">2023</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title text-4xl md:text-6xl font-serif font-semibold tracking-tight leading-none mb-6">R&amp;D</h3>
+                        <div class="project-desc"><p class="text-sm md:text-base opacity-50 leading-relaxed max-w-sm">Pushing the boundaries of digital experiences with experimental interactive technologies.</p></div>
+                    </div>
+                    <div class="project-cta flex items-center gap-3"><span class="text-xs uppercase tracking-[0.2em] font-medium opacity-40 group-hover:opacity-100 group-hover:text-accent transition-all duration-300">View project</span><span class="text-sm opacity-40 group-hover:opacity-100 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300">→</span></div>
+                </div>
+                <div class="project-media w-full md:w-[60%] h-[240px] md:h-auto overflow-hidden relative bg-[#c5c8cf]">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop" class="project-img w-full h-full object-cover" alt="R&D">
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="project-card absolute inset-0 flex flex-col md:flex-row rounded-2xl overflow-hidden cursor-pointer group" style="z-index:10;">
+                <div class="project-info w-full md:w-[40%] p-6 md:p-10 flex flex-col justify-between bg-white relative z-10">
+                    <div>
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="text-[11px] font-mono font-medium opacity-25">04</span>
+                            <div class="flex gap-2">
+                                <span class="project-tag text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/[0.03] font-medium opacity-50">Web3</span>
+                                <span class="project-tag text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-black/[0.03] font-medium opacity-50">2024</span>
+                            </div>
+                        </div>
+                        <h3 class="project-title text-4xl md:text-6xl font-serif font-semibold tracking-tight leading-none mb-6">Ether</h3>
+                        <div class="project-desc"><p class="text-sm md:text-base opacity-50 leading-relaxed max-w-sm">Building trust in web3 through sophisticated and accessible design language.</p></div>
+                    </div>
+                    <div class="project-cta flex items-center gap-3"><span class="text-xs uppercase tracking-[0.2em] font-medium opacity-40 group-hover:opacity-100 group-hover:text-accent transition-all duration-300">View project</span><span class="text-sm opacity-40 group-hover:opacity-100 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300">→</span></div>
+                </div>
+                <div class="project-media w-full md:w-[60%] h-[240px] md:h-auto overflow-hidden relative bg-[#eee]">
+                    <img src="https://images.unsplash.com/photo-1621504450181-5d356f61d307?q=80&w=2000&auto=format&fit=crop" class="project-img w-full h-full object-cover" alt="Ether">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- EXPERTISE HEADING -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="expertise-heading" class="dark-section py-32 md:py-48 px-6 md:px-10 bg-primary text-bg relative overflow-hidden">
+    <div class="expertise-bg absolute inset-0 opacity-20 pointer-events-none" style="background:radial-gradient(ellipse at 30% 50%, rgba(59,91,219,0.3), transparent 60%)"></div>
+    <div class="max-w-6xl mx-auto relative z-10">
+        <span class="inline-block text-xs uppercase tracking-[0.3em] font-medium opacity-40 mb-12 reveal-line" data-reveal>What we do</span>
+        <h2 class="text-4xl md:text-[5vw] font-serif font-semibold leading-[1.1] tracking-tight">
+            <span class="reveal-line" data-reveal>Design, code,</span>
+            <span class="reveal-line" data-reveal>and motion — crafted</span>
+            <span class="reveal-line" data-reveal>with obsession.</span>
+        </h2>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SERVICES — Horizontal Accordion -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="services" class="services-wrapper relative bg-primary">
+    <div class="services-sticky sticky top-0 h-screen w-full flex flex-col justify-center p-4 md:p-8">
+        <div class="flex items-center gap-4 mb-6 md:mb-8">
+            <div class="section-line-svc w-0 h-px bg-white/20"></div>
+            <span class="text-xs uppercase tracking-[0.3em] font-medium text-bg/50">Services</span>
+        </div>
+        <div class="services-list flex flex-col md:flex-row w-full flex-1 max-h-[70vh] gap-3">
+            <div class="service-panel flex-shrink-0 bg-bg rounded-xl md:rounded-2xl p-5 md:p-7 flex flex-col justify-between overflow-hidden relative cursor-pointer group">
+                <div><div class="flex justify-between items-start mb-2"><h3 class="text-xl md:text-2xl font-serif font-semibold whitespace-nowrap group-hover:text-accent transition-colors duration-300">Design</h3><span class="text-[11px] font-medium opacity-30 mt-1">(01)</span></div><div class="service-line w-full h-px bg-black/8 mb-4"></div></div>
+                <div class="service-desc"><ul class="text-[13px] opacity-60 leading-relaxed space-y-1.5"><li>UI / UX Design</li><li>Brand Identity</li><li>Design Systems</li><li>Art Direction</li></ul></div>
+            </div>
+            <div class="service-panel flex-shrink-0 bg-bg rounded-xl md:rounded-2xl p-5 md:p-7 flex flex-col justify-between overflow-hidden relative cursor-pointer group">
+                <div><div class="flex justify-between items-start mb-2"><h3 class="text-xl md:text-2xl font-serif font-semibold whitespace-nowrap group-hover:text-accent transition-colors duration-300">Code</h3><span class="text-[11px] font-medium opacity-30 mt-1">(02)</span></div><div class="service-line w-full h-px bg-black/8 mb-4"></div></div>
+                <div class="service-desc"><ul class="text-[13px] opacity-60 leading-relaxed space-y-1.5"><li>Frontend Development</li><li>Backend Architecture</li><li>CMS Integration</li><li>Performance</li></ul></div>
+            </div>
+            <div class="service-panel flex-shrink-0 bg-bg rounded-xl md:rounded-2xl p-5 md:p-7 flex flex-col justify-between overflow-hidden relative cursor-pointer group">
+                <div><div class="flex justify-between items-start mb-2"><h3 class="text-xl md:text-2xl font-serif font-semibold whitespace-nowrap group-hover:text-accent transition-colors duration-300">Engage</h3><span class="text-[11px] font-medium opacity-30 mt-1">(03)</span></div><div class="service-line w-full h-px bg-black/8 mb-4"></div></div>
+                <div class="service-desc"><ul class="text-[13px] opacity-60 leading-relaxed space-y-1.5"><li>WebGL / Three.js</li><li>Micro-interactions</li><li>Motion Design</li><li>Scroll Experiences</li></ul></div>
+            </div>
+            <div class="service-panel flex-shrink-0 bg-bg rounded-xl md:rounded-2xl p-5 md:p-7 flex flex-col justify-between overflow-hidden relative cursor-pointer group">
+                <div><div class="flex justify-between items-start mb-2"><h3 class="text-xl md:text-2xl font-serif font-semibold whitespace-nowrap group-hover:text-accent transition-colors duration-300">Expand</h3><span class="text-[11px] font-medium opacity-30 mt-1">(04)</span></div><div class="service-line w-full h-px bg-black/8 mb-4"></div></div>
+                <div class="service-desc"><ul class="text-[13px] opacity-60 leading-relaxed space-y-1.5"><li>Growth Strategy</li><li>SEO &amp; Analytics</li><li>A/B Testing</li><li>Ongoing Support</li></ul></div>
+            </div>
+            <div class="service-panel service-panel-last flex-shrink-0 bg-accent/10 rounded-xl md:rounded-2xl p-5 md:p-7 flex flex-col justify-between overflow-hidden relative">
+                <div><div class="flex justify-between items-start mb-2"><h3 class="text-xl md:text-2xl font-serif font-semibold whitespace-nowrap text-accent">All Services</h3><span class="text-accent mt-1">→</span></div><div class="w-full h-px bg-accent/15 mb-4"></div></div>
+                <div class="service-desc"><p class="text-[13px] opacity-60 leading-relaxed mb-6">Full range of capabilities.</p><button class="px-6 py-3 bg-accent text-white rounded-full text-[13px] font-medium hover:bg-accent/90 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300">Explore All →</button></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- STORY — Image Scroll Reveal -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="story" class="story-wrapper relative bg-bg py-32 md:py-0">
+    <div class="story-sticky sticky top-0 min-h-screen w-full flex flex-col md:flex-row items-stretch px-6 md:px-10">
+        <div class="hidden md:flex w-full md:w-[45%] items-center py-20">
+            <div class="story-image-wrap w-full h-0 rounded-2xl overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop" class="w-full h-[80vh] object-cover" alt="About Atoll">
+            </div>
+        </div>
+        <div class="w-full md:w-[55%] flex flex-col justify-center md:pl-16 py-20">
+            <span class="inline-block text-xs uppercase tracking-[0.3em] font-medium opacity-40 mb-8 reveal-line" data-reveal>Our Story</span>
+            <h2 class="text-4xl md:text-[4vw] font-serif font-semibold leading-[1.1] tracking-tight mb-8">
+                <span class="reveal-line" data-reveal>Crafting digital</span>
+                <span class="reveal-line" data-reveal>experiences since</span>
+                <span class="reveal-line" data-reveal><em>2018.</em></span>
+            </h2>
+            <div class="md:hidden w-full h-[300px] rounded-xl overflow-hidden mb-8">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover" alt="About Atoll">
+            </div>
+            <p class="text-base md:text-lg opacity-60 leading-relaxed max-w-lg reveal-line" data-reveal>
+                We partner with ambitious brands to build web experiences that combine strategic thinking with cutting-edge technology. Every pixel, every interaction, every line of code is crafted with intention.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- CTA — Decrypt text scramble -->
+<!-- ═══════════════════════════════════════════ -->
+<section id="cta" class="py-32 md:py-48 px-6 md:px-10 bg-bg relative overflow-hidden">
+    <div class="cta-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full opacity-0 pointer-events-none" style="background:radial-gradient(circle, rgba(59,91,219,0.06), transparent 70%)"></div>
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row relative z-10">
+        <div class="md:w-[55%]">
+            <h2 class="text-5xl md:text-[9vw] font-serif font-semibold leading-[0.95] tracking-tight">
+                <span class="reveal-line" data-reveal>Let's start</span>
+                <span class="reveal-line" data-reveal>your next</span>
+            </h2>
+        </div>
+        <div class="md:w-[45%] md:flex md:flex-col md:justify-end md:-mt-[8vw]">
+            <h2 class="text-5xl md:text-[9vw] font-serif font-semibold leading-[0.95] tracking-tight">
+                <span class="reveal-line" data-reveal><em class="scramble-target text-accent">project</em></span>
+            </h2>
+            <div class="mt-12 reveal-line" data-reveal>
+                <a href="#" class="cta-btn inline-flex items-center gap-4 group">
+                    <span class="relative overflow-hidden inline-block h-[1.2em]">
+                        <span class="block transition-transform duration-500 group-hover:-translate-y-full">Get in touch</span>
+                        <span class="block absolute top-full left-0 transition-transform duration-500 group-hover:-translate-y-full text-accent">Get in touch</span>
+                    </span>
+                    <span class="inline-block transition-all duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:rotate-[-45deg]">↗</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════ -->
+<footer class="bg-primary text-bg/70 px-6 md:px-10 py-16 md:py-20">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16">
+            <div><h4 class="text-xs uppercase tracking-[0.2em] opacity-40 mb-4">Navigation</h4><ul class="space-y-2 text-sm"><li><a href="#" class="footer-link">Work</a></li><li><a href="#" class="footer-link">Services</a></li><li><a href="#" class="footer-link">About</a></li><li><a href="#" class="footer-link">Contact</a></li></ul></div>
+            <div><h4 class="text-xs uppercase tracking-[0.2em] opacity-40 mb-4">Services</h4><ul class="space-y-2 text-sm"><li><a href="#" class="footer-link">Design</a></li><li><a href="#" class="footer-link">Development</a></li><li><a href="#" class="footer-link">Motion</a></li><li><a href="#" class="footer-link">Strategy</a></li></ul></div>
+            <div><h4 class="text-xs uppercase tracking-[0.2em] opacity-40 mb-4">Social</h4><ul class="space-y-2 text-sm"><li><a href="#" class="footer-link">Instagram ↗</a></li><li><a href="#" class="footer-link">Dribbble ↗</a></li><li><a href="#" class="footer-link">LinkedIn ↗</a></li><li><a href="#" class="footer-link">Twitter ↗</a></li></ul></div>
+            <div><h4 class="text-xs uppercase tracking-[0.2em] opacity-40 mb-4">Contact</h4><ul class="space-y-2 text-sm"><li><a href="#" class="footer-link">hello@atoll.digital</a></li><li class="opacity-40">Montréal, Canada</li></ul></div>
+        </div>
+        <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <span class="font-serif text-3xl font-semibold text-bg tracking-tight">Atoll</span>
+            <span class="text-xs opacity-30">&copy; 2025 Atoll Digital. All rights reserved.</span>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

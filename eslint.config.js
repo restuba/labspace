@@ -4,7 +4,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import { configs, plugins } from 'eslint-config-airbnb-extended';
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'reference/**']),
   {
     name: 'js/recommended',
     ...js.configs.recommended,
@@ -19,6 +19,17 @@ export default defineConfig([
   plugins.typescriptEslint,
   ...configs.base.typescript,
   ...configs.react.typescript,
+  reactRefresh.configs.vite,
+  {
+    rules: {
+      '@stylistic/max-len': 'off',
+      'no-param-reassign': 'off',
+      'react/no-array-index-key': 'off',
+      'consistent-return': 'off',
+      'import/prefer-default-export': 'off',
+      'import-x/prefer-default-export': 'off',
+    },
+  },
   {
     files: ['**/*.{jsx,tsx}'],
     rules: {
@@ -26,5 +37,4 @@ export default defineConfig([
       'react/react-in-jsx-scope': 'off',
     },
   },
-  reactRefresh.configs.vite,
 ]);
