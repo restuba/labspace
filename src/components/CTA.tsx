@@ -27,7 +27,7 @@ export default function CTA() {
             </span>
           </h2>
           <div className="mt-12 reveal-line" data-reveal>
-            <a href={cta.ctaHref} className="cta-btn group">
+            <a href={cta.ctaHref} className="cta-btn group" data-magnetic="0.25">
               <span className="relative overflow-hidden inline-block h-[1.2em]">
                 <span className="block transition-transform duration-500 group-hover:-translate-y-full">{cta.ctaLabel}</span>
                 <span className="block absolute top-full left-0 transition-transform duration-500 group-hover:-translate-y-full text-accent">{cta.ctaLabel}</span>

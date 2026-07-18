@@ -6,6 +6,7 @@ import Lenis from 'lenis';
 
 import { clearLenis, setLenis } from './hooks/useScrollReady';
 import { initRevealLines } from './lib/revealLines';
+import { initMagnetic } from './lib/magnetic';
 import { cta } from './data';
 
 import Preloader from './components/Preloader';
@@ -18,6 +19,7 @@ import Services from './components/Services';
 import Story from './components/Story';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import CustomCursor from './components/CustomCursor';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -83,6 +85,9 @@ export default function App() {
       disposers.push(initProjects(), initServices(), initCTA());
       initStory();
       initHeroScrollFade();
+      initImageReveal();
+      initSectionReveals();
+      disposers.push(initMagnetic());
       ScrollTrigger.refresh();
     }, page ?? undefined);
 
@@ -101,6 +106,9 @@ export default function App() {
       {!preloaderDone && (
         <Preloader onReveal={revealPage} onComplete={removePreloader} />
       )}
+
+      <CustomCursor />
+      <div className="grain-overlay" aria-hidden="true" />
 
       <div id="page-wrapper">
         <Header />
@@ -363,4 +371,40 @@ function initCTA() {
     cancelAnimationFrame(frameId);
     clearTimeout(timeoutId);
   };
+}
+
+function initImageReveal() {
+  const images = gsap.utils.toArray<HTMLElement>('.img-reveal');
+  images.forEach((img) => {
+    gsap.to(img, {
+      clipPath: 'inset(0 0 0 0)',
+      duration: 1.2,
+      ease: 'power4.inOut',
+      scrollTrigger: {
+        trigger: img,
+        start: 'top 85%',
+        once: true,
+      },
+    });
+  });
+}
+
+function initSectionReveals() {
+  const sections = gsap.utils.toArray<HTMLElement>('[data-section-reveal]');
+  sections.forEach((section) => {
+    const children = section.querySelectorAll<HTMLElement>('[data-section-reveal-item]');
+    if (!children.length) return;
+    gsap.from(children, {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+      stagger: 0.12,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%',
+        once: true,
+      },
+    });
+  });
 }

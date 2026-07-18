@@ -38,7 +38,7 @@ export default function Story() {
           </h2>
 
           {/* Mobile image */}
-          <div className="md:hidden w-full h-[300px] rounded-xl overflow-hidden mb-8">
+          <div className="md:hidden w-full h-[300px] rounded-xl overflow-hidden mb-8 img-reveal">
             <img src={story.image} className="w-full h-full object-cover" alt={story.imageAlt} />
           </div>
 
