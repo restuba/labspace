@@ -14,7 +14,6 @@ export const hero = {
   meta: [
     { label: 'Based in', value: 'Indonesia' },
     { label: 'Focus', value: 'Frontend' },
-    { label: 'Available', value: 'Open to work' },
   ],
 };
 
@@ -119,13 +118,11 @@ export const cta = {
 };
 
 export const footer = {
-  nav: [
-    { label: 'Work', href: '#projects' },
-    { label: 'Skills', href: '#services' },
-    { label: 'About', href: '#story' },
-    { label: 'Contact', href: '#cta' },
-  ],
-  services: ['Web Apps', 'Desktop Apps', 'Mobile Apps', 'Migration'],
+  personal: {
+    name: 'Restu Bayu Aji',
+    location: 'Indonesia',
+    email: 'resbayuaji@gmail.com',
+  },
   social: [
     { label: 'GitHub', href: 'https://github.com/restuba' },
     { label: 'LinkedIn', href: 'https://linkedin.com/in/restuba' },

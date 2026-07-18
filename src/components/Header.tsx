@@ -1,5 +1,12 @@
-import { site, footer } from '../data';
+import { site } from '../data';
 import { getLenis } from '../hooks/useScrollReady';
+
+const nav = [
+  { label: 'Work', href: '#projects' },
+  { label: 'Skills', href: '#services' },
+  { label: 'About', href: '#story' },
+  { label: 'Contact', href: '#cta' },
+];
 
 function scrollTo(e: React.MouseEvent<HTMLAnchorElement>) {
   e.preventDefault();
@@ -28,7 +35,7 @@ export default function Header() {
       </a>
 
       <nav className="relative z-10 hidden md:flex gap-8 text-[13px] uppercase tracking-widest font-medium">
-        {footer.nav.map((item) => (
+        {nav.map((item) => (
           <a
             key={item.label}
             href={item.href}
