@@ -1,9 +1,43 @@
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { services } from '../data';
 
-// All scroll animation handled centrally in App.tsx → initServices()
 export default function Services() {
+  const wrapperRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 768px)', () => {
+      const panels = gsap.utils.toArray<HTMLElement>('.service-panel:not(.service-panel-last)');
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapper,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1.5,
+        },
+      });
+
+      panels.forEach((panel, i) => {
+        const desc = panel.querySelector<HTMLElement>('.service-desc');
+        const line = panel.querySelector<HTMLElement>('.service-line');
+        const label = `s${i}`;
+        tl.to(panel, { width: 90, duration: 1, ease: 'power2.inOut' }, label);
+        if (desc) tl.to(desc, { opacity: 0, duration: 0.5, ease: 'power2.in' }, label);
+        if (line) tl.to(line, { width: 0, duration: 0.6 }, label);
+        tl.to({}, { duration: 0.08 });
+      });
+    });
+
+    return () => mm.revert();
+  }, { scope: wrapperRef });
+
   return (
-    <section id="services" className="services-wrapper relative bg-primary">
+    <section id="services" ref={wrapperRef} className="services-wrapper relative bg-primary">
       <div className="services-sticky sticky top-0 h-screen w-full flex flex-col justify-center p-4 md:p-8">
         <div className="flex items-center gap-4 mb-6 md:mb-8">
           <div className="section-line-svc w-0 h-px bg-white/20" />

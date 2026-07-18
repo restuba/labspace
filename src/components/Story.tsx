@@ -1,7 +1,56 @@
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { story } from '../data';
 
-// Scroll animation (image expand, parallax, reveal lines) handled in App.tsx → initStory() + initRevealLines()
 export default function Story() {
+  const wrapperRef = useRef<HTMLElement>(null);
+  const imageWrapRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const wrapper = wrapperRef.current;
+    const imageWrap = imageWrapRef.current;
+    if (!wrapper || !imageWrap) return;
+
+    gsap.to(imageWrap, {
+      height: '80vh',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: wrapper,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1.2,
+      },
+    });
+
+    const img = imageWrap.querySelector<HTMLElement>('img');
+    if (img) {
+      gsap.to(img, {
+        yPercent: -8,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: wrapper,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+    }
+
+    const mobileImg = wrapper.querySelector<HTMLElement>('.img-reveal');
+    if (mobileImg) {
+      gsap.to(mobileImg, {
+        clipPath: 'inset(0 0 0 0)',
+        duration: 1.2,
+        ease: 'power4.inOut',
+        scrollTrigger: {
+          trigger: mobileImg,
+          start: 'top 85%',
+          once: true,
+        },
+      });
+    }
+  }, { scope: wrapperRef });
   // "em:" prefix → italic
   const renderLine = (line: string, i: number) => {
     if (line.startsWith('em:')) {
@@ -15,11 +64,11 @@ export default function Story() {
   };
 
   return (
-    <section id="story" className="story-wrapper relative bg-bg py-32 md:py-0">
+    <section id="story" ref={wrapperRef} className="story-wrapper relative bg-bg py-32 md:py-0">
       <div className="story-sticky sticky top-0 min-h-screen w-full flex flex-col md:flex-row items-stretch px-6 md:px-10">
         {/* Desktop image — height animated by GSAP from 0 → 80vh */}
         <div className="hidden md:flex w-full md:w-[45%] items-center py-20">
-          <div className="story-image-wrap w-full h-0 rounded-2xl overflow-hidden">
+          <div ref={imageWrapRef} className="story-image-wrap w-full h-0 rounded-2xl overflow-hidden">
             <img
               src={story.image}
               className="w-full h-[80vh] object-cover"

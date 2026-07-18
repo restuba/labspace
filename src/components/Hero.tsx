@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { hero } from '../data';
 import Logo from './Logo';
 
@@ -13,35 +14,54 @@ export default function Hero({ ready }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useGSAP(() => {
     const section = sectionRef.current;
     if (!ready || !section) return;
 
-    const context = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.15 });
-      tl.from('.hero-title', {
-        y: 80, opacity: 0, duration: 1.4, ease: 'power4.out',
-      });
-      tl.to('.hero-line-v', { height: '100%', duration: 1.3, ease: 'power4.inOut' }, '-=0.9');
-      tl.to('.hero-line-h', { width: '100%', duration: 1.3, ease: 'power4.inOut' }, '-=1');
-      tl.to('.hero-tagline', {
-        opacity: 1, y: 0, duration: 1.1, ease: 'power3.out',
-      }, '-=0.7');
-      tl.to('.hero-meta', {
-        opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
-      }, '-=0.6');
-      tl.to('.scroll-cue', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.4');
-      tl.call(() => {
-        section.querySelectorAll<HTMLElement>('.hero-orb').forEach((orb) => orb.classList.add('is-visible'));
-        canvasRef.current?.classList.add('is-visible');
-      }, [], '-=0.9');
-    }, section);
+    const tl = gsap.timeline({ delay: 0.15 });
+    tl.from('.hero-title', {
+      y: 80, opacity: 0, duration: 1.4, ease: 'power4.out',
+    });
+    tl.to('.hero-line-v', { height: '100%', duration: 1.3, ease: 'power4.inOut' }, '-=0.9');
+    tl.to('.hero-line-h', { width: '100%', duration: 1.3, ease: 'power4.inOut' }, '-=1');
+    tl.to('.hero-tagline', {
+      opacity: 1, y: 0, duration: 1.1, ease: 'power3.out',
+    }, '-=0.7');
+    tl.to('.hero-meta', {
+      opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+    }, '-=0.6');
+    tl.to('.scroll-cue', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.4');
+    tl.call(() => {
+      section.querySelectorAll<HTMLElement>('.hero-orb').forEach((orb) => orb.classList.add('is-visible'));
+      canvasRef.current?.classList.add('is-visible');
+    }, [], '-=0.9');
 
-    return () => context.revert();
-  }, [ready]);
-
-  // Hero scroll-fade is handled in App.tsx alongside other ScrollTriggers
-  // to ensure single-batch creation and proper refresh timing.
+    // Scroll Fade Logic moved from App.tsx
+    gsap.to('.hero-content', {
+      y: -80,
+      opacity: 0,
+      scale: 0.97,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section, start: 'top top', end: 'bottom top', scrub: 1.5,
+      },
+    });
+    gsap.to('#hero-particles', {
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section, start: '60% top', end: 'bottom top', scrub: 1,
+      },
+    });
+    gsap.to('.hero-orb', {
+      scale: 1.3,
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section, start: '40% top', end: 'bottom top', scrub: 1.2,
+      },
+    });
+  }, { scope: sectionRef, dependencies: [ready] });
 
   useEffect(() => {
     const canvas = canvasRef.current;
