@@ -1,4 +1,5 @@
 import { site } from '../data';
+import Logo from './Logo';
 import { getLenis } from '../hooks/useScrollReady';
 
 const nav = [
@@ -29,9 +30,10 @@ export default function Header() {
       <a
         href="#hero"
         onClick={scrollTo}
-        className="relative z-10 font-serif text-2xl font-semibold tracking-tight header-text text-primary transition-colors duration-700"
+        className="relative z-10 flex items-center gap-2 header-text text-primary transition-colors duration-700"
       >
-        {site.name}
+        <Logo size={28} />
+        <span className="font-serif text-xl font-semibold tracking-tight">{site.name}</span>
       </a>
 
       <nav className="relative z-10 hidden md:flex gap-8 text-[13px] uppercase tracking-widest font-medium">

@@ -2,6 +2,7 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { hero } from '../data';
+import Logo from './Logo';
 
 interface Props {
   ready: boolean;
@@ -228,9 +229,12 @@ export default function Hero({ ready }: Props) {
 
       <div ref={contentRef} className="hero-content relative z-[2] flex flex-col md:flex-row gap-8 md:gap-0 mb-[120px]">
         <div className="md:w-1/2 flex items-end">
-          <h1 className="hero-title text-[12vw] md:text-[8vw] font-serif font-semibold leading-[0.9] tracking-tight">
-            {hero.title}
-          </h1>
+          <div>
+            <Logo size={44} className="mb-4" />
+            <h1 className="hero-title text-[12vw] md:text-[8vw] font-serif font-semibold leading-[0.9] tracking-tight">
+              {hero.title}
+            </h1>
+          </div>
         </div>
         <div className="md:w-1/2 flex flex-col justify-end md:pl-12">
           <p className="hero-tagline text-lg md:text-xl font-light opacity-0 mb-6 max-w-md" style={{ transform: 'translateY(30px)' }}>
