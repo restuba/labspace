@@ -1,5 +1,6 @@
 // ─── SITE CONTENT ────────────────────────────────────────────────────────────
 // Edit this file to update all content across the portfolio.
+import cuplikanImg from './assets/images/projects/cuplikan.png';
 
 export const site = {
   name: 'labspace',
@@ -30,14 +31,14 @@ export const about = {
 export const projects = [
   {
     index: '01',
-    title: 'Mitra Keluarga',
-    tags: ['Healthcare', '2023 - Present'],
-    description: 'Internal and patient-facing web applications, kiosk rewrite from PHP to Electron.js, Nuxt.js to Next.js migration, Android kiosk with React Native, and LMS platform.',
+    title: 'Cuplikan',
+    tags: ['React.js', 'Tailwind', 'TMDB API'],
+    description: 'A web application built with React.js and Tailwind CSS, utilizing the public API from https://api.themoviedb.org/3 to display movie and TV show data.',
     infoBg: 'bg-white',
     mediaBg: 'bg-[#e8e8e4]',
-    image: 'https://images.unsplash.com/photo-1592982537447-6f29e18b6fc4?q=80&w=2000&auto=format&fit=crop',
-    imageAlt: 'Mitra Keluarga',
-    href: '#',
+    image: cuplikanImg,
+    imageAlt: 'Cuplikan',
+    href: 'https://cuplikan-netflix.vercel.app/',
   },
   {
     index: '02',

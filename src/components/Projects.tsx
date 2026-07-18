@@ -131,8 +131,11 @@ export default function Projects() {
         {/* Card stack */}
         <div className="project-stack relative flex-1 w-full overflow-hidden rounded-2xl border border-black/[0.04]">
           {projects.map((p, i) => (
-            <div
+            <a
               key={p.index}
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="project-card absolute inset-0 flex flex-col md:flex-row rounded-2xl overflow-hidden cursor-pointer group"
               style={{ zIndex: (projects.length - i) * 10 }}
             >
@@ -168,14 +171,14 @@ export default function Projects() {
               </div>
 
               {/* Media */}
-              <div className={`project-media w-full md:w-[60%] h-[240px] md:h-auto overflow-hidden relative ${p.mediaBg}`}>
+              <div className={`project-media w-full md:w-[60%] h-60 md:h-auto overflow-hidden relative ${p.mediaBg}`}>
                 <img
                   src={p.image}
-                  className="project-img w-full h-full object-cover"
+                  className="project-img w-full h-full object-cover origin-right"
                   alt={p.imageAlt}
                 />
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
