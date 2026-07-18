@@ -2,29 +2,29 @@
 // Edit this file to update all content across the portfolio.
 
 export const site = {
-  name: 'Studio',
-  email: 'hello@yourstudio.com',
-  location: 'Your City, Country',
+  name: 'labspace',
+  email: 'hello@labspace.dev',
+  location: 'Indonesia',
   year: '2025',
 };
 
 export const hero = {
-  title: 'Studio',
-  tagline: 'A creative studio building modern digital experiences through design, engineering, and motion.',
+  title: 'labspace',
+  tagline: 'Personal playground where design meets code — crafting digital experiences through curiosity, experimentation, and obsessive attention to detail.',
   meta: [
-    { label: 'Founded', value: '20XX' },
-    { label: 'Location', value: 'Anywhere' },
-    { label: 'Focus', value: 'Digital' },
+    { label: 'Based in', value: 'Indonesia' },
+    { label: 'Focus', value: 'Frontend' },
+    { label: 'Available', value: 'Freelance' },
   ],
 };
 
 export const about = {
   label: 'About',
   lines: [
-    'We believe in the power of thoughtful design',
-    'and meticulous engineering to create digital',
-    'products that feel alive, purposeful,',
-    'and unmistakably premium.',
+    'I build things for the web — blending',
+    'design sensibility with engineering rigor',
+    'to create experiences that feel',
+    'crafted, smooth, and intentional.',
   ],
 };
 
@@ -43,8 +43,8 @@ export const projects = [
   {
     index: '02',
     title: 'Project Beta',
-    tags: ['Media', '2023'],
-    description: 'A high-performance website reflecting brand leadership and modern design principles.',
+    tags: ['Web App', '2023'],
+    description: 'A high-performance web application with focus on interactive motion and fluid transitions.',
     infoBg: 'bg-[#E8E7E3]',
     mediaBg: 'bg-[#d5d5d0]',
     image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2000&auto=format&fit=crop',
@@ -55,7 +55,7 @@ export const projects = [
     index: '03',
     title: 'Project Gamma',
     tags: ['Experimental', '2023'],
-    description: 'Pushing the boundaries of digital experiences with experimental interactive technologies.',
+    description: 'Pushing the boundaries of web experiences with creative coding and interactive technologies.',
     infoBg: 'bg-[#D5D8DF]',
     mediaBg: 'bg-[#c5c8cf]',
     image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop',
@@ -65,8 +65,8 @@ export const projects = [
   {
     index: '04',
     title: 'Project Delta',
-    tags: ['Web App', '2024'],
-    description: 'Building trust through sophisticated, accessible, and performance-driven design language.',
+    tags: ['Design System', '2024'],
+    description: 'A comprehensive design system built for consistency, accessibility, and developer experience.',
     infoBg: 'bg-white',
     mediaBg: 'bg-[#eeeeee]',
     image: 'https://images.unsplash.com/photo-1621504450181-5d356f61d307?q=80&w=2000&auto=format&fit=crop',
@@ -76,7 +76,7 @@ export const projects = [
 ];
 
 export const expertiseHeading = {
-  label: 'What we do',
+  label: 'What I do',
   lines: ['Design, code,', 'and motion — crafted', 'with obsession.'],
 };
 
@@ -84,52 +84,52 @@ export const services = [
   {
     title: 'Design',
     index: '(01)',
-    items: ['UI / UX Design', 'Brand Identity', 'Design Systems', 'Art Direction'],
+    items: ['UI / UX Design', 'Design Systems', 'Prototyping', 'Art Direction'],
   },
   {
     title: 'Code',
     index: '(02)',
-    items: ['Frontend Development', 'Backend Architecture', 'CMS Integration', 'Performance'],
+    items: ['React / Next.js', 'TypeScript', 'Animation & Motion', 'Performance'],
   },
   {
-    title: 'Engage',
+    title: 'Create',
     index: '(03)',
-    items: ['WebGL / Three.js', 'Micro-interactions', 'Motion Design', 'Scroll Experiences'],
+    items: ['WebGL / Three.js', 'Micro-interactions', 'Scroll Experiences', 'Creative Coding'],
   },
   {
-    title: 'Expand',
+    title: 'Ship',
     index: '(04)',
-    items: ['Growth Strategy', 'SEO & Analytics', 'A/B Testing', 'Ongoing Support'],
+    items: ['CI / CD', 'Testing', 'Deployment', 'Monitoring'],
   },
 ];
 
 export const story = {
-  label: 'Our Story',
-  titleLines: ['Crafting digital', 'experiences since', 'em:day one.'],
-  body: 'We partner with ambitious brands to build web experiences that combine strategic thinking with cutting-edge technology. Every pixel, every interaction, every line of code is crafted with intention.',
+  label: 'My Story',
+  titleLines: ['Experimenting &', 'building since', 'em:day one.'],
+  body: 'I treat every project as a lab experiment — a chance to explore new techniques, push boundaries, and refine my craft. The web is my playground, and every pixel is an opportunity to learn something new.',
   image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop',
-  imageAlt: 'Our workspace',
+  imageAlt: 'Workspace',
 };
 
 export const cta = {
-  line1: ["Let's start", 'your next'],
-  scrambleWords: ['project', 'idea', 'success', 'vision', 'brand'],
-  ctaLabel: 'Get in touch',
-  ctaHref: 'mailto:hello@yourstudio.com',
+  line1: ["Let's build", 'something'],
+  scrambleWords: ['cool', 'bold', 'fresh', 'wild', 'great'],
+  ctaLabel: 'Say hello',
+  ctaHref: 'mailto:hello@labspace.dev',
 };
 
 export const footer = {
   nav: [
     { label: 'Work', href: '#projects' },
-    { label: 'Services', href: '#services' },
+    { label: 'Skills', href: '#services' },
     { label: 'About', href: '#story' },
     { label: 'Contact', href: '#cta' },
   ],
-  services: ['Design', 'Development', 'Motion', 'Strategy'],
+  services: ['Design', 'Frontend', 'Motion', 'Creative Dev'],
   social: [
-    { label: 'Instagram', href: '#' },
-    { label: 'Dribbble', href: '#' },
+    { label: 'GitHub', href: '#' },
     { label: 'LinkedIn', href: '#' },
     { label: 'Twitter', href: '#' },
+    { label: 'Dribbble', href: '#' },
   ],
 };
