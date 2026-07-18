@@ -103,7 +103,7 @@ export default function Hero({ ready }: Props) {
         else if (p.y > rh) p.y = 0;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(59,91,219,${p.o})`;
+        ctx.fillStyle = `rgba(0,0,0,${p.o * 0.3})`;
         ctx.fill();
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
@@ -112,7 +112,7 @@ export default function Hero({ ready }: Props) {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(59,91,219,${0.07 * (1 - distance / CONN)})`;
+            ctx.strokeStyle = `rgba(0,0,0,${0.03 * (1 - distance / CONN)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -207,19 +207,19 @@ export default function Hero({ ready }: Props) {
       <div
         className="hero-orb absolute rounded-full pointer-events-none z-0"
         style={{
-          width: 'clamp(300px,40vw,600px)', height: 'clamp(300px,40vw,600px)', top: '-10%', left: '-5%', background: 'radial-gradient(circle, rgba(59,91,219,0.18), transparent 70%)',
+          width: 'clamp(300px,40vw,600px)', height: 'clamp(300px,40vw,600px)', top: '-10%', left: '-5%', background: 'radial-gradient(circle, rgba(248,231,49,0.06), transparent 70%)',
         }}
       />
       <div
         className="hero-orb absolute rounded-full pointer-events-none z-0"
         style={{
-          width: 'clamp(200px,30vw,450px)', height: 'clamp(200px,30vw,450px)', bottom: '10%', right: '-5%', background: 'radial-gradient(circle, rgba(59,91,219,0.12), transparent 70%)',
+          width: 'clamp(200px,30vw,450px)', height: 'clamp(200px,30vw,450px)', bottom: '10%', right: '-5%', background: 'radial-gradient(circle, rgba(248,231,49,0.04), transparent 70%)',
         }}
       />
       <div
         className="hero-orb absolute rounded-full pointer-events-none z-0"
         style={{
-          width: 'clamp(150px,20vw,300px)', height: 'clamp(150px,20vw,300px)', top: '40%', left: '50%', background: 'radial-gradient(circle, rgba(9,20,35,0.08), transparent 70%)',
+          width: 'clamp(150px,20vw,300px)', height: 'clamp(150px,20vw,300px)', top: '40%', left: '50%', background: 'radial-gradient(circle, rgba(26,26,26,0.04), transparent 70%)',
         }}
       />
 

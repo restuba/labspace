@@ -7,7 +7,7 @@ export default function CTA() {
       {/* Radial glow — opacity driven by GSAP scroll */}
       <div
         className="cta-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full opacity-0 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(59,91,219,0.06), transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(248,231,49,0.06), transparent 70%)' }}
       />
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row relative z-10">

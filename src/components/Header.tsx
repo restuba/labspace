@@ -48,9 +48,9 @@ export default function Header() {
       </nav>
 
       <div className="relative z-10 flex items-center gap-4">
-        <span className="header-text text-primary text-[13px] uppercase tracking-widest font-medium hidden md:inline transition-colors duration-700">
+        {/* <span className="header-text text-primary text-[13px] uppercase tracking-widest font-medium hidden md:inline transition-colors duration-700">
           EN
-        </span>
+        </span> */}
       </div>
     </header>
   );

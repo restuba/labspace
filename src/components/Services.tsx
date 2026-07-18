@@ -23,7 +23,7 @@ export default function Services() {
                   </h3>
                   <span className="text-[11px] font-medium opacity-30 mt-1">{svc.index}</span>
                 </div>
-                <div className="service-line w-full h-px bg-black/[0.08] mb-4" />
+                <div className="service-line w-full h-px bg-black/8 mb-4" />
               </div>
               <div className="service-desc">
                 <ul className="text-[13px] opacity-60 leading-relaxed space-y-1.5">
@@ -34,7 +34,7 @@ export default function Services() {
           ))}
 
           {/* All Services panel */}
-          <div className="service-panel service-panel-last bg-accent/10 rounded-xl md:rounded-2xl p-5 md:p-7 flex flex-col justify-between overflow-hidden relative">
+          <div className="service-panel service-panel-last bg-muted/10 rounded-xl md:rounded-2xl p-5 md:p-7 flex flex-col justify-between overflow-hidden relative">
             <div>
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-xl md:text-2xl font-serif font-semibold whitespace-nowrap text-accent">All Services</h3>
@@ -43,7 +43,7 @@ export default function Services() {
               <div className="w-full h-px bg-accent/15 mb-4" />
             </div>
             <div className="service-desc">
-              <p className="text-[13px] opacity-60 leading-relaxed mb-6">Full range of capabilities.</p>
+              <p className="text-[13px] opacity-60 text-bg leading-relaxed mb-6">Full range of capabilities.</p>
               <button
                 type="button"
                 className="px-6 py-3 bg-accent text-white rounded-full text-[13px] font-medium hover:bg-accent/90 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"

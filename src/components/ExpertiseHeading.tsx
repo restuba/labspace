@@ -9,7 +9,7 @@ export default function ExpertiseHeading() {
     >
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at 30% 50%, rgba(59,91,219,0.3), transparent 60%)' }}
+        style={{ background: 'radial-gradient(ellipse at 30% 50%, rgba(248,231,49,0.08), transparent 60%)' }}
       />
       <div className="max-w-6xl mx-auto relative z-10">
         <span

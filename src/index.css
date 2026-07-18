@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #091423;
-  --color-bg: #F4F3EF;
-  --color-secondary: #D5D8DF;
-  --color-accent: #3B5BDB;
+  --color-primary: #000000;
+  --color-bg: #FFFFFF;
+  --color-secondary: #1A1A1A;
+  --color-accent: #F8E731;
+  --color-muted: #94949C;
+
   --font-serif: "Sora", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
 /* ── Header dark mode (toggled by scroll in App.tsx) ── */
-.header-dark .header-bg { background: rgba(9,20,35,0.88) !important; border-color: rgba(255,255,255,0.05) !important; }
-.header-dark .header-text { color: #F4F3EF !important; }
+.header-dark .header-bg { background: rgba(0,0,0,0.94) !important; border-color: rgba(255,255,255,0.06) !important; }
+.header-dark .header-text { color: #FFFFFF !important; }
 
 /* ── Lenis ── */
 html.lenis,
@@ -26,7 +28,7 @@ html.lenis body { height: auto; }
 *::before,
 *::after { box-sizing: border-box; }
 
-::selection { background: #3B5BDB; color: #F4F3EF; }
+::selection { background: #F8E731; color: #000000; }
 
 /* ponytail: use overflow-clip not overflow-hidden — hidden creates a scroll
    container on html/body which breaks position:sticky in Chrome/Safari. clip
@@ -91,7 +93,7 @@ body { margin: 0; overflow-x: clip; }
   transition: box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .service-panel:hover {
-  box-shadow: 0 8px 32px rgba(9, 20, 35, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
 @media (min-width: 768px) {
@@ -136,7 +138,7 @@ body { margin: 0; overflow-x: clip; }
   align-items: center;
   gap: 1rem;
 }
-.cta-btn:hover { border-color: #3B5BDB; color: #3B5BDB; }
+.cta-btn:hover { border-color: #F8E731; color: #000000; }
 .cta-glow { transition: opacity 1.5s ease; }
 
 /* ── Grain/noise overlay ── */
