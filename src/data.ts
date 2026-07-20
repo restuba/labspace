@@ -33,7 +33,7 @@ export const projects = [
     index: '01',
     title: 'Cuplikan',
     tags: ['React.js', 'Tailwind', 'TMDB API'],
-    description: 'A web application built with React.js and Tailwind CSS, utilizing the public API from https://api.themoviedb.org/3 to display movie and TV show data.',
+    description: 'A web application built with React.js and Tailwind CSS, utilizing the public API from api.themoviedb.org to display movie and TV show data.',
     infoBg: 'bg-white',
     mediaBg: 'bg-[#e8e8e4]',
     image: cuplikanImg,

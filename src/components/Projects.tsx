@@ -174,7 +174,7 @@ export default function Projects() {
               <div className={`project-media w-full md:w-[60%] h-60 md:h-auto overflow-hidden relative ${p.mediaBg}`}>
                 <img
                   src={p.image}
-                  className="project-img w-full h-full object-cover origin-right"
+                  className="project-img w-full h-full object-cover origin-right grayscale group-hover:grayscale-0 transition-all duration-500"
                   alt={p.imageAlt}
                 />
               </div>
