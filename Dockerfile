@@ -31,11 +31,17 @@ FROM nginx:alpine
 # node_modules & source code tidak ikut → image final tetap ramping.
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Pakai config Nginx custom (penting untuk SPA, dijelaskan di nginx.conf).
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Salin config sebagai TEMPLATE, bukan langsung ke conf.d. Saat container start,
+# nginx:alpine menjalankan envsubst pada file di folder templates dan menaruh
+# hasilnya di /etc/nginx/conf.d/. Di sinilah ${PORT} diganti nilai sebenarnya.
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 
-# Container ini "membuka" port 80 (default HTTP Nginx).
+# Default PORT=80 supaya `docker run` lokal jalan tanpa perlu set env var.
+# Render menimpa nilai ini dengan port miliknya (mis. 10000) saat runtime.
+ENV PORT=80
+
+# Dokumentasi saja: port yang didengarkan mengikuti $PORT (default 80).
 EXPOSE 80
 
-# Perintah yang jalan saat container start.
-CMD ["nginx", "-g", "daemon off;"]
+# Tidak perlu CMD custom: entrypoint bawaan nginx:alpine sudah memproses
+# template (envsubst) lalu menjalankan nginx dengan "daemon off;".
