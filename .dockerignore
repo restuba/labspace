@@ -1,0 +1,17 @@
+# Mirip .gitignore, tapi untuk Docker. File di sini TIDAK ikut dikirim ke build.
+# Tujuannya: build lebih cepat & aman (node_modules host tidak menimpa milik container).
+node_modules
+dist
+dist-ssr
+.git
+.gitignore
+.env
+*.log
+.DS_Store
+.kiro
+.vscode
+.husky
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+README.md

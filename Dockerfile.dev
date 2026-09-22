@@ -1,0 +1,23 @@
+# ── Dockerfile.dev (DEVELOPMENT) ─────────────────────────────────────
+# Untuk ngoding sehari-hari: jalankan Vite dev server + hot reload di container.
+# Beda dengan Dockerfile production: TIDAK di-build jadi statis, tapi tetap "hidup".
+
+FROM node:22-alpine
+WORKDIR /app
+
+# Install dependency dulu (biar kena cache, sama seperti di production).
+# SENGAJA tanpa package-lock.json: lockfile hasil generate Mac tidak mencatat
+# binary native Linux yang dibutuhkan Rolldown (Vite 8). Tanpa lockfile, npm
+# menyusun dependency segar sesuai OS container = Linux.
+COPY package.json ./
+RUN npm install
+
+# Kode sumber TIDAK di-COPY di sini — nanti kita "mount" dari laptop lewat
+# docker-compose, supaya setiap kamu edit file, container langsung lihat perubahannya.
+
+# Vite dev server jalan di port 5173.
+EXPOSE 5173
+
+# "--host 0.0.0.0" WAJIB di dalam container. Tanpa ini Vite cuma dengar di
+# localhost DALAM container, jadi tidak bisa diakses dari browser laptop kamu.
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

@@ -1,0 +1,36 @@
+# ── docker-compose.yml ───────────────────────────────────────────────
+# docker-compose = cara menjalankan container lewat file config, bukan ketik
+# perintah panjang di terminal. Di sini ada 2 "service" (2 container berbeda):
+#   - web  : versi production (Nginx)
+#   - dev  : versi development (Vite hot-reload)
+# Kamu jalankan salah satu sesuai kebutuhan.
+
+services:
+  # ─── PRODUCTION ───
+  # Jalankan dengan:  docker compose up web
+  # Lalu buka:        http://localhost:8080
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      # "8080:80" = port 8080 di laptop kamu → diteruskan ke port 80 di container.
+      - "8080:80"
+
+  # ─── DEVELOPMENT ───
+  # Jalankan dengan:  docker compose up dev
+  # Lalu buka:        http://localhost:5173
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      # VOLUME = "jembatan" antara folder laptop dan folder container.
+      # Baris ini: setiap file yang kamu edit di laptop langsung terlihat di
+      # container → hot reload jalan.
+      - .:/app
+      # Baris ini melindungi node_modules milik container agar TIDAK ketimpa
+      # oleh folder host (yang mungkin kosong / beda OS). Ini trik umum & penting.
+      - /app/node_modules
