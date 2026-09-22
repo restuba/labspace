@@ -255,8 +255,6 @@ export default function Hero({ ready }: Props) {
             <Logo size={44} className="mb-4" />
             <h1 className="hero-title text-[12vw] md:text-[8vw] font-serif font-semibold leading-[0.9] tracking-tight">
               {hero.title}
-              {' '}
-              EDITED
             </h1>
           </div>
         </div>
