@@ -1,0 +1,15 @@
+# Blueprint deploy Render — Static Site untuk SPA Vite + React.
+# Render build sendiri di Linux (npm install pasang binary native Rolldown yang benar),
+# lalu serve folder ./dist lewat CDN. Gratis, tanpa Docker/Nginx.
+services:
+  - type: web
+    name: labspace
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    # Ganti semua route ke index.html — ini padanan try_files di nginx.conf,
+    # supaya refresh di halaman dalam (React Router) tidak 404.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
